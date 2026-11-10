@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Almost ready{% endblock %}
+{% block body %}
+<h1>Almost ready</h1>
+{% if has_url %}
+<div class="notice bad">
+  <p><strong>The database is set, but the app could not connect to it.</strong></p>
+  <p class="muted">{{ error }}</p>
+</div>
+<p>Ask your AI agent to check the database link in CMO Studio and read the app logs.</p>
+{% else %}
+<div class="notice">
+  <p><strong>This app needs a database.</strong></p>
+  <p>Ask your AI agent to create and link a database in CMO Studio. Then reload this page.</p>
+</div>
+{% endif %}
+{% endblock %}

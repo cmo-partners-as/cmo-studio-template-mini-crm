@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Contacts{% endblock %}
+{% block body %}
+<div class="nav"><h1 style="margin:0">Contacts</h1><a class="btn" style="margin:0" href="/contacts/new">New contact</a></div>
+<form method="get" action="/" class="row" style="margin-bottom:8px">
+  <input type="search" name="q" value="{{ q }}" placeholder="Search" style="flex:1;min-width:160px">
+  <select name="status" style="width:auto">
+    <option value="">All statuses</option>
+    {% for s in statuses %}<option value="{{ s }}" {% if s == status %}selected{% endif %}>{{ s|capitalize }} ({{ counts.get(s, 0) }})</option>{% endfor %}
+  </select>
+  <button type="submit" class="secondary" style="margin:0">Filter</button>
+</form>
+{% if not rows %}
+<div class="notice">{% if q or status %}No contacts match.{% else %}No contacts yet. Add your first one.{% endif %}</div>
+{% else %}
+<div class="card table-scroll">
+<table>
+  <tr><th>Name</th><th>Company</th><th>Email</th><th>Status</th></tr>
+  {% for c in rows %}
+  <tr>
+    <td><a href="/contacts/{{ c.id }}">{{ c.name }}</a></td>
+    <td>{{ c.company }}</td>
+    <td>{% if c.email %}<a href="mailto:{{ c.email }}">{{ c.email }}</a>{% endif %}</td>
+    <td><span class="badge">{{ c.status }}</span></td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% endif %}
+{% endblock %}

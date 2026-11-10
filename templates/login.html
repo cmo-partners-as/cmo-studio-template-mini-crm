@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block body %}
+<div style="max-width:380px;margin:40px auto 0">
+<h1>Mini CRM</h1>
+<p class="muted">Sign in to see your contacts.</p>
+{% if error %}<div class="notice bad">{{ error }}</div>{% endif %}
+<form method="post" action="/login" class="card">
+  <label for="password" style="margin-top:0">Password</label>
+  <input type="password" id="password" name="password" autocomplete="current-password" autofocus required>
+  <button type="submit">Sign in</button>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<p><a href="/" class="muted">&larr; All contacts</a></p>
+<h1>{{ title }}</h1>
+{% if error %}<div class="notice bad">{{ error }}</div>{% endif %}
+{% if saved %}<div class="notice ok">Saved.</div>{% endif %}
+<form method="post" action="{{ action }}" class="card">
+  <label for="name" style="margin-top:0">Name</label>
+  <input type="text" id="name" name="name" value="{{ contact.name or '' }}" maxlength="200" required>
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" value="{{ contact.email or '' }}" maxlength="254">
+  <label for="company">Company</label>
+  <input type="text" id="company" name="company" value="{{ contact.company or '' }}" maxlength="200">
+  <label for="status">Status</label>
+  <select id="status" name="status">
+    {% for s in statuses %}<option value="{{ s }}" {% if s == contact.status %}selected{% endif %}>{{ s|capitalize }}</option>{% endfor %}
+  </select>
+  <label for="notes">Notes</label>
+  <textarea id="notes" name="notes" maxlength="5000">{{ contact.notes or '' }}</textarea>
+  <button type="submit">Save</button>
+</form>
+{% if can_delete %}
+<form method="post" action="{{ action }}/delete" onsubmit="return confirm('Delete this contact?')">
+  <button type="submit" class="danger">Delete contact</button>
+</form>
+{% endif %}
+{% endblock %}

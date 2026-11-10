@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Mini CRM{% endblock %}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main class="wrap wide">
+{% if signed_in %}
+<div class="nav"><a href="/" style="text-decoration:none;color:inherit"><strong>Mini CRM</strong></a>
+<form method="post" action="/logout" style="margin:0"><button class="secondary" style="margin:0;padding:6px 12px">Sign out</button></form></div>
+{% endif %}
+{% block body %}{% endblock %}
+</main>
+<footer class="foot"><a href="https://studio.cmopartners.co/?ref=template-mini-crm">Made with CMO Studio</a></footer>
+</body>
+</html>

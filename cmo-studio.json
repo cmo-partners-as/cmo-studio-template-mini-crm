@@ -1,0 +1,11 @@
+{
+  "name": "Mini CRM",
+  "description": "A small CRM for contacts (name, email, company, status, notes) with a plain HTML interface and a password.",
+  "runtime": "python",
+  "startup": "gunicorn -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000 main:app",
+  "database": true,
+  "mail": false,
+  "env": [
+    {"name": "ADMIN_PASSWORD", "description": "Password to sign in to the CRM", "secret": true}
+  ]
+}
