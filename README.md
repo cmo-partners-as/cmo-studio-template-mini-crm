@@ -2,6 +2,8 @@
 
 # Mini CRM
 
+**For AI agents:** read [AGENTS.md](AGENTS.md) and the CMO Studio guide at https://studio.cmopartners.co/llms.txt.
+
 A small CRM for keeping track of contacts: name, email, company, status and notes. Plain server-rendered HTML pages, no JavaScript framework. One password protects everything.
 
 Built with FastAPI and Jinja2. Runs on [CMO Studio](https://studio.cmopartners.co/?ref=template-mini-crm).
